@@ -1,0 +1,45 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Home</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-card class="welcome-card">
+        <div class="kenburns-container">
+            <img [src]="images[currentImageIndex]" [ngClass]="{'kenburns-img': timerStarted }" />
+        </div>
+        <ion-card-header>
+            <ion-card-subtitle>Get Started</ion-card-subtitle>
+            <ion-card-title>Welcome to Daymaker</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            <p>Check out one of our giving opportunties in the menu. You could really make a child in need's day!</p>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-list lines="none">
+        <ion-list-header>
+            <ion-label>Links</ion-label>
+        </ion-list-header>
+        
+        <ion-item href="https://drive.google.com/open?id=1LxXJEtjOb3xrZlJFSjcIT_XBGzVgy5Gqj5ar1OT8ifw" target="_blank">
+            <ion-icon slot="start" color="medium" name="build"></ion-icon>
+            <ion-label>Challenge Part 1</ion-label>
+        </ion-item>
+        <ion-item href="https://drive.google.com/open?id=1xo5G-sUCWgCF6nwxBDFGKy8Z7yi6TfKi3KUR0i5-20A" target="_blank">
+            <ion-icon slot="start" color="medium" name="book"></ion-icon>
+            <ion-label>Challenge Part 2</ion-label>
+        </ion-item>
+        <ion-item href="https://drive.google.com/open?id=1GlaqSODafJz6Qbl4Uf58fDp2Mo_JBcKJLOGWZi2dvTg" target="_blank">
+            <ion-icon slot="start" color="medium" name="grid"></ion-icon>
+            <ion-label>User Stories ~ Product Backlog ~ NgRx Design</ion-label>
+        </ion-item>
+        <!-- <ion-item href="">
+            <ion-icon slot="start" color="medium" name="color-fill"></ion-icon>
+            <ion-label>Video Demo</ion-label>
+        </ion-item> -->
+    </ion-list>
+</ion-content>

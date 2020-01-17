@@ -1,0 +1,81 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>{{title}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-item>
+        <ion-label>Gender</ion-label>
+        <ion-icon name="female" hidden></ion-icon>
+        <ion-select interface="popover" interfaceOptions='{"cssClass": "daymaker-popover", "mode": "md"}' [(ngModel)]="genderValue">
+            <ion-select-option [value]="null">Both</ion-select-option>
+            <ion-select-option value="f">
+                <ion-icon name="female"></ion-icon>Female
+            </ion-select-option>
+            <ion-select-option value="m">
+                <ion-icon name="male"></ion-icon>Male
+            </ion-select-option>
+        </ion-select>
+    </ion-item>
+    <ion-item>
+        <ion-label>Age</ion-label>
+        <ion-range min="1" max="17" dualKnobs="true" step="1" [(ngModel)]="rangeValue" pin="true">
+            <ion-label slot="start">{{rangeValue.lower}}</ion-label>
+            <ion-label slot="end">{{rangeValue.upper}}</ion-label>
+        </ion-range>
+    </ion-item>
+    <ion-item>
+        <ion-button size="large" (click)="submitFilter()">
+            <ion-icon name="funnel"></ion-icon>Filter
+        </ion-button>
+    </ion-item>
+    <ng-container *ngIf="items.length == null">
+        <ion-card>
+            <h1 class="ion-text-center">Something went wrong.</h1>
+            <ion-button routerLink="/">
+                <ion-icon name="home"></ion-icon>Go Home
+            </ion-button>
+        </ion-card>
+    </ng-container>
+    <ng-container *ngIf="items.length != null && items.length === 0">
+        <ion-card class="ion-text-center">
+            <h1>No more children in this giving opportunity that match the criteria</h1>
+            <ion-button routerLink="/">
+                <ion-icon name="home"></ion-icon>Go Home
+            </ion-button>
+        </ion-card>
+    </ng-container>
+    <ng-container *ngIf="items.length !== null && items.length > 0">
+        <ion-grid fixed>
+            <ion-row>
+                <ion-col size="12" size-md="6" *ngFor="let child of items">
+                    <ion-card class="child-card">
+                        <ion-card-header>
+                            <ion-item detail="false" lines="none">
+                                <img [src]="'assets/kid/'+child.id+'.png'">
+                                <h1>{{child.alias}}</h1>
+                            </ion-item>
+                        </ion-card-header>
+                        <ion-card-content>
+                            <ion-list>
+                                <ion-item>
+                                    <ion-label>Age: {{child.age}}</ion-label>
+                                    <ion-icon [hidden]="child.gender != 'f'" name="female" class="female"></ion-icon>
+                                    <ion-icon [hidden]="child.gender != 'm'" name="male" class="male"></ion-icon>
+                                </ion-item>
+                            </ion-list>
+                        </ion-card-content>
+                        <ion-row class="ion-no-padding ion-justify-content-center\">
+                            <ion-col size="4" class="ion-text-right">
+                                <ion-button color="primary" (click)="confirm1(child.id)">🎁CLAIM</ion-button>
+                            </ion-col>
+                        </ion-row>
+                    </ion-card>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ng-container>
+</ion-content>
