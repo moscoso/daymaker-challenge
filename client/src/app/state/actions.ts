@@ -2,19 +2,16 @@ import { Action } from '@ngrx/store';
 
 export enum AppActionType {
     OPPORTUNITIES_REQUESTED = 'Request opportunities list',
-    OPPORTUNITIES_RECEIVED = 'Opportunities list received', // from Effect
-    OPPORTUNITIES_FETCH_FAILED = 'Opportunities list fetch failed', // from Effect
+    OPPORTUNITIES_RECEIVED = 'Opportunities list received',
+    OPPORTUNITIES_FETCH_FAILED = 'Opportunities list fetch failed',
     OPPORTUNITY_SELECTED = 'Opportunity Selected',
     INVALID_ROUTE_ACTIVATED = 'Invalid Route Activated',
-    // GIVE_POOL_REQUESTED = 'Request Give Pool',
-    GIVE_POOL_RECEIVED = 'Give Pool Received', // from Effect
-    GIVE_POOL_FETCH_FAILED = 'Give Pool Fetch Failed', // from Effect
+    GIVE_POOL_RECEIVED = 'Give Pool Received',
+    GIVE_POOL_FETCH_FAILED = 'Give Pool Fetch Failed',
     CHILD_CLAIM_STARTED = 'Child Claim Started',
-    CONFIRMED_ONCE = 'User Confirmed Once', // from Effect  ?
-    CONFIRMED_TWICE = 'User Confirmed Twice', // from Effect ?
     CHILD_CLAIM_POSTED = 'Child Claim Posted',
-    CHILD_CLAIM_SUCCEEDED = 'Child Claim Succeeded', // from Effect
-    CHILD_CLAIM_FAILED = 'Child Claim Failed', // from Effect
+    CHILD_CLAIM_SUCCEEDED = 'Child Claim Succeeded',
+    CHILD_CLAIM_FAILED = 'Child Claim Failed',
     CHILD_CLAIMED_ALREADY = 'Child Claim Failed because already claimed',
     GIVE_POOL_FILTER_CHANGED = 'Give Pool Filter Changed',
 }
@@ -46,7 +43,7 @@ export class OpportunitySelectedAction implements Action {
     readonly type = AppActionType.OPPORTUNITY_SELECTED;
     public payload;
     constructor(opportunityID: number) {
-        this.payload = {opportunityID};
+        this.payload = { opportunityID };
     }
 }
 
@@ -54,7 +51,7 @@ export class InvalidRouteActivated implements Action {
     readonly type = AppActionType.INVALID_ROUTE_ACTIVATED;
     public payload;
     constructor(route: string) {
-        this.payload = {route};
+        this.payload = { route };
     }
 }
 
@@ -103,7 +100,7 @@ export class ChildClaimPostedAction implements Action {
     readonly type = AppActionType.CHILD_CLAIM_POSTED;
     public payload;
     constructor(givePoolID: number) {
-        this.payload = {givePoolID};
+        this.payload = { givePoolID };
     }
 }
 
